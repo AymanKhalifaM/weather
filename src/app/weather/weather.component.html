@@ -1,0 +1,43 @@
+<div class="container">
+  <div id="divWeatherMain" class="mt-5">
+    <div *ngIf="WeatherData.isDay" class="weatherWidgetRow">
+      <i class="fa fa-3x fa-sun-o sun"></i>
+    </div>
+    <div *ngIf="WeatherData.isDay === false" class="weatherWidgetRow">
+      <i class="fa fa-3x fa-moon-o moon"></i>
+    </div>
+    <div class="weatherWidgetRow cloudDiv">
+      <i class="fa fa-cloud fa-3x cloud"></i>
+    </div>
+    <div class="weatherWidgetRow">{{ WeatherData.temp_celcius }}°</div>
+    <div class="weatherWidgetRow">
+      {{ WeatherData.temp_min }}° / {{ WeatherData.temp_max }}°
+    </div>
+    <div class="weatherWidgetRow">
+      Feels Like: {{ WeatherData.temp_feels_like }}°
+    </div>
+    <div class="weatherWidgetRow">{{ WeatherData.name }}</div>
+    <div class="weatherWidgetRow">
+      Humidity: {{ WeatherData.main.humidity }}%
+    </div>
+    <div class="weatherWidgetRow">
+        {{ WeatherData.sky }}
+    </div>
+    <div class="weatherWidgetRow">
+       sunset at : {{ WeatherData.sunset_time }}
+    </div>
+    <div class="weatherWidgetRow" *ngIf="error" style="color: red;">
+        {{ error }}
+    </div>
+    
+   
+    
+    <div class="form-group mt-5 align-content-center w-50 search">
+        <label class="label">Search For City <i class="fa fa-search"></i></label>
+      <input type="text" class="form-control " [(ngModel)]="city" />
+      <button class="btn btn-primary form-control" [disabled]="!city" (click)="onClick()">Get Weather</button>
+    </div>
+
+    
+  </div>
+</div>
